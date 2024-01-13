@@ -1,3 +1,22 @@
+const callStack = [
+  'a(): returns "freeCodeCamp " + b()',
+  'b(): returns "is " + c()'
+];
+
+const a = () => {
+  return "freeCodeCamp " + b();
+};
+
+const b = () => {
+  return "is " + c();
+};
+
+const c = () => {
+  return "awesome!";
+};
+
+console.log(a());
+
 const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
@@ -5,8 +24,12 @@ const result = document.getElementById("result");
 const decimalToBinary = (input) => {
   let binary = "";
 
-  while (input > 0) {
+  if (input === 0) {
+    binary = "0";
+  }
 
+  while (input > 0) {
+    binary = (input % 2) + binary;
     input = Math.floor(input / 2);
   }
 
